@@ -3,6 +3,7 @@ main {
     with the restaurant content */
     margin-top: 100px;
     background-color: red;
+    width: 100vw;
 }
 
 
@@ -11,13 +12,13 @@ main {
 /* Whether these are displayed will be controlled by the
    navigation buttons with Javascript magic */
 #don {
-    /* display: hidden; */
+    display: none;
 }
 #jimmy {
-    display: hidden;
+    /* display: none; */
 }
 #emma {
-    display: hidden;
+    display: none;
 }
 #don, #jimmy, #emma{
     background-color: bisque;
