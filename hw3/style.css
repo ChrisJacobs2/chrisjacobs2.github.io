@@ -1,5 +1,5 @@
 #don {
-    background-color: bisque;
+    /* display: hidden; */
 }
 
 #jimmy {
@@ -9,3 +9,33 @@
 #emma {
     display: hidden;
 }
+
+#don, #jimmy, #emma{
+    background-color: bisque;
+    /* margin-left: 100px;
+    margin-right: 100px; */
+    margin: auto;
+    width: 75%;
+    
+}
+
+#left-arrow {
+    rotate: 180deg;
+}
+
+#left-arrow, #right-arrow {
+    display: none;
+}
+
+.gallery-bar {
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.gallery-bar img {
+    width: 150px;
+    height: 150px;
+}
+
