@@ -1,32 +1,51 @@
+main {
+    /* the margin-top prevents the buttons from interfering
+    with the restaurant content */
+    margin-top: 100px;
+    background-color: red;
+}
+
+
+
+/* RESTAURANT CONTENT ############################## */
+/* Whether these are displayed will be controlled by the
+   navigation buttons with Javascript magic */
 #don {
     /* display: hidden; */
 }
-
 #jimmy {
     display: hidden;
 }
-
 #emma {
     display: hidden;
 }
-
 #don, #jimmy, #emma{
     background-color: bisque;
-    /* margin-left: 100px;
-    margin-right: 100px; */
     margin: auto;
     width: 75%;
-    
 }
+/* END RESTAURANT CONTENT ########################## */
 
-#left-arrow {
-    rotate: 180deg;
-}
 
+
+/* NAVIGATION BUTTONS ############################## */
 #left-arrow, #right-arrow {
-    display: none;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
 }
+#right-arrow {
+    float: right;
+    margin-right: 20%;
+}
+#left-arrow {
+    float: left;
+    margin-left: 20%;
+}
+/* END NAVIGATION BUTTONS ########################## */
 
+
+/* GALLERY BAR ##################################### */
 .gallery-bar {
     background-color: aquamarine;
     display: flex;
@@ -38,4 +57,4 @@
     width: 150px;
     height: 150px;
 }
-
+/* END GALLERY BAR ################################# */
