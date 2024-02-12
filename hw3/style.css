@@ -12,15 +12,15 @@ main {
 /* Whether these are displayed will be controlled by the
    navigation buttons with Javascript magic */
 #don {
-    display: none;
+    /* display: none; */
 }
 #jimmy {
     /* display: none; */
 }
-#emma {
-    display: none;
+#yum {
+    /* display: none; */
 }
-#don, #jimmy, #emma{
+#don, #jimmy, #yum{
     background-color: bisque;
     margin: auto;
     width: 75%;
