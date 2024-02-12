@@ -13,12 +13,13 @@ main {
    navigation buttons with Javascript magic */
 #don {
     /* display: none; */
+    display: block;
 }
 #jimmy {
-    /* display: none; */
+    display: none;
 }
 #yum {
-    /* display: none; */
+    display: none;
 }
 #don, #jimmy, #yum{
     background-color: bisque;
