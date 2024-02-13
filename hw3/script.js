@@ -1,8 +1,13 @@
 // Hi Sunny! 
 
+// This script file is divided into two parts: First, the code that handles cycling through
+// the food recommendations. Second, the code that handles zooming images and the associated
+// aside text.
+
     // VARIABLES
 // This number keeps track of what food reccomendation we are on
-var index = 0;
+// var index = 0;
+window.index = 0;  // changed to window.index to make it global. I need to access it in zoom.js
 /*
     0 = don
     1 = jimmy

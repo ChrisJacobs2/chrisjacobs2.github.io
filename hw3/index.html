@@ -50,10 +50,10 @@
                 </p>
                 <h4>Reccommended Dishes</h4>
                 <section class="gallery-bar">
-                    <img src="pictures/don/soup.png" class="zoom">
-                    <img src="pictures/don/udon.png" class="zoom">
-                    <img src="pictures/don/ramen.png" class="zoom">
-                    <img src="pictures/don/beef-bowl.png" class="zoom">
+                    <img src="pictures/don/soup.png" class="zoom soup">
+                    <img src="pictures/don/udon.png" class="zoom udon">
+                    <img src="pictures/don/ramen.png" class="zoom ramen">
+                    <img src="pictures/don/beef-bowl.png" class="zoom beef-bowl">
                 </section>
             </article>
             <aside id="don-perks">
@@ -162,13 +162,25 @@
          replace the text in the aside whenever
          the image respective to the meal is 
          zoomed in -->
+         <!-- NOTE TO SELF
+            I plan on using javascript to replace all the html in the green aside with the html down here, 
+            whenever an image is zoomed in. When the image is zoomed out, the text goes back to normal.
+            Based on her wording, I think this is what Prof. Sunny wants. -->
     <div class="hidden">
-        <aside class="food-review">
+        <aside id="food-review">
             <!-- don food review -->
-            <p class="beef-bowl"></p>
-            <p class="ramen"></p>
-            <p class="udon"></p>
-            <p class="soup"></p>
+            <p class="beef-bowl">
+                $14.95. Rib eye steak shiitake mushrooms, bean sprouts and green onions over rice.
+            </p>
+            <p class="ramen">
+                $10.95. choice of Miso or Soy Sauce broth.
+            </p>
+            <p class="udon">
+                $13.20. Beef udon soup. The wheat noodles are thicker than sphaghetti.
+            </p>
+            <p class="soup">
+                $3.45. Miso soup. Salty and yummy.
+            </p>
             <!-- jimmy johns food review -->
             <p class="chicken-sandwich"></p>
             <p class="lettuce-sandwich"></p>
