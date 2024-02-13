@@ -2,11 +2,61 @@
 <html>
     <head>
         <title>Create a meal plan</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="meal-plan-style.css">
         <script src="meal-plan-scripting.js" defer></script>
     </head>
     <body>
         <h1>Customize your own meal plan!</h1>
         <h3> Click <a href="index.html">here</a> to go back to the food review page</h3>
+        <div id="window">
+            <main>
+                <section id="don">
+                    <h3>Don</h3>
+                    <div class="imgbar">
+                        <p>Miso Soup $3.45</p>
+                        <img src="pictures/don/soup.png" class="soup" data-price="3.45" alt="miso soup">
+                        <p>Udon $13.20</p>
+                        <img src="pictures/don/udon.png" class="udon" data-price="13.20" alt="udon">
+                        <p>Ramen $10.95</p>
+                        <img src="pictures/don/ramen.png" class="ramen" data-price="10.95" alt="ramen">
+                        <p>Beef Bowl $14.95</p>
+                        <img src="pictures/don/beef-bowl.png" class="beef-bowl" data-price="14.95" alt="beef bowl">
+                    </div>
+                </section>
+
+                <section id="jimmy">
+                    <h3>Jimmy John's</h3>
+                    <div class="imgbar">
+                        <p>Chicken Sandwich $8.75</p>
+                        <img src="pictures/JimmyJohn/chicken-sandwich.png" class="chicken-sandwich" data-price="8.75" alt="chicken sandwich">
+                        <p>Lettuce Sandwich $8.75</p>
+                        <img src="pictures/JimmyJohn/lettuce-sandwich.png" class="lettuce-sandwich" data-price="8.75" alt="lettuce sandwich">
+                        <p>Billy Club $8.75</p>
+                        <img src="pictures/JimmyJohn/billy-club.png" class="billy-club" data-price="8.75" alt="billy club">
+                    </div>
+                </section>
+
+                <section id="yum">
+                    <h3>Yum Yum Better Ice Cream</h3>
+                    <div class="imgbar">
+                        <p>Cheerwine Bottle $1.50</p>
+                        <img src="pictures/yumyum/cheerwine.png" class="cheerwine" data-price="1.50" alt="cheerwine bottle">
+                        <p>Butterscotch Cone $3.00</p>
+                        <img src="pictures/yumyum/butterscotch.png" class="butterscotch" data-price="3.00" alt="butterscotch cone">
+                        <p>Strawberry Cup $3.00</p>
+                        <img src="pictures/yumyum/strawberry.png" class="strawberry" data-price="3.00" alt="strawberry bowl">
+                    </div>
+                </section>
+            </main>
+            <aside id="order-text">
+                <p>Click on the food you want to add to your meal plan!</p>
+                <h4>Total Price: <span id="total">$$$</span></h4>
+                <section class="order hidden">
+                    <p class="food-name">Food Title</p><br>
+                    <p class="food-price">$9.99</p>
+                    <button class="remove">✖</button>
+                </section>
+            </aside>
+        </div>
     </body>
 </html>
