@@ -15,6 +15,8 @@ var yumPerksText = yumPerks.innerHTML;
 
 var zoomedImage = null;
 
+// remember global variable window.index
+
 /*
     this function uses a var zoomedImage to keep track of
     whether, and which image is zoomed. Clicking an Image will
@@ -23,19 +25,54 @@ var zoomedImage = null;
 */
 images.forEach(function(img) {
     img.addEventListener("click", function() {
-        if (this == zoomedImage) {  // if the current image is zoomed
-            // managing the image
+        if (this == zoomedImage) {  // if the clicked image is zoomed
+            // unzoom the image
             this.classList.remove("zoomed");
             zoomedImage = null;
 
-            // managing the aside text
+            // set the aside text to default
+            switch (index) {
+                case 0: // don
+                    donPerks.innerHTML = donPerksText;
+                    break;
+                case 1: // jimmy john's
+                    jimmyPerks.innerHTML = jimmyPerksText;
+                    break;
+                case 2: // yumyum
+                    yumPerks.innerHTML = yumPerksText;
+                    break;
+            }
+
 
         } else {
             if (zoomedImage) {  // if some image is zoomed
+                // unzoom it
                 zoomedImage.classList.remove("zoomed");
             }
+            // zoom the clicked image
             this.classList.add("zoomed");
             zoomedImage = this;
+
+            // set the aside text to the appropriate text
+                // get the second class of the image
+            var food = this.classList[1];
+                // loop through the food-review aside for a paragraph with the same class
+            for (var i = 0; i < foodReview.children.length; i++) {
+                if (foodReview.children[i].classList.contains(food)) {
+                    // set the aside text to the paragraph's text
+                    switch (index) {
+                        case 0: // don
+                            donPerks.innerHTML = foodReview.children[i].innerHTML;
+                            break;
+                        case 1: // jimmy john's
+                            jimmyPerks.innerHTML = foodReview.children[i].innerHTML;
+                            break;
+                        case 2: // yumyum
+                            yumPerks.innerHTML = foodReview.children[i].innerHTML;
+                            break;
+                    }
+                }
+            }
         }
     });
 });
