@@ -1,16 +1,22 @@
 body {
     overflow:visible;
     overflow-x: hidden;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: rgb(253, 226, 185);
 
 }
 main {
     /* the margin-top prevents the buttons from interfering
     with the restaurant content */
     margin-top: 100px;
-    background-color: red;
     width: 99vw;
     display: flex;
     justify-content: space-between;
+    background-color: rgb(249, 232, 212);
+}
+
+p,h1,h3 {
+    margin-left: 5px;
 }
 
 
@@ -40,7 +46,7 @@ main {
     display: none;
 }
 #don, #jimmy, #yum{
-    background-color: bisque;
+    /* background-color: rgb(249, 232, 212); */
     margin: auto;
     width: 75%;
 }
@@ -64,7 +70,9 @@ main {
 #don-perks, #jimmy-perks, #yum-perks {
     background-color: rgb(30, 170, 105);
     flex: 1;
-    /* display: none; */
+    color: white;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+
 }
 /* END ASIDE CONTENT ############################### */
 
@@ -88,7 +96,7 @@ main {
 
 /* GALLERY BAR ##################################### */
 .gallery-bar {
-    background-color: aquamarine;
+    /* background-color: rgb(249, 232, 212); */
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
@@ -109,5 +117,6 @@ main {
     /* width: 40%;
     height: 100px; */
     size: 50px;
+    margin-top: 20px;
 }
 /* END ADVERTISEMENT BAR ########################### */
