@@ -16,7 +16,6 @@ let foodRcmd = [    // food recommendations
     document.getElementById("jimmy"),
     document.getElementById("yum")
 ];
-
 let foodAside = [   // food aside
     document.getElementById("don-perks"),
     document.getElementById("jimmy-perks"),
@@ -32,8 +31,6 @@ document.getElementById("yum").style.display = "none";
 document.getElementById("don-perks").style.display = "block";
 document.getElementById("jimmy-perks").style.display = "none";
 document.getElementById("yum-perks").style.display = "none";
-
-index = 0;
 
     // EVENT LISTENERS
 document.getElementById("left-arrow").addEventListener("click", function() {

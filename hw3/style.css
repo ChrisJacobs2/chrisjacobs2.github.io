@@ -14,12 +14,24 @@ main {
 }
 
 
+/* IMAGE ZOOM FEATURE ############################## */
+.zoom {
+    transition: transform 0.3s ease-in-out;
+}
+.zoomed {
+    transform: scale(2);
+}
+.hidden {
+    display: none;
+}
+/* END IMAGE ZOOM FEATURE ########################## */
+
+
 /* RESTAURANT CONTENT ############################## */
 /* Whether these are displayed will be controlled by the
    navigation buttons with Javascript magic */
 #don {
-    /* display: none; */
-    display: block;
+    display: none;
 }
 #jimmy {
     display: none;
@@ -41,7 +53,7 @@ main {
     be controlled using javascript magic.
 */
 #don-perks {
-    display:block;
+    display:none;
 }
 #jimmy-perks {
     display: none;

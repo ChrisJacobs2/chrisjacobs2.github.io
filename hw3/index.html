@@ -3,7 +3,8 @@
     <head>
         <title>Assignment 3</title>
         <link rel="stylesheet" href="style.css">
-        <script src="script.js" defer></script>
+        <script src="script.js" defer></script> other site logic on this page
+        <script src="zoom.js" defer></script>   <!-- Handles the image click zoom feature -->
     </head>
     <body>
         <section>
@@ -49,10 +50,10 @@
                 </p>
                 <h4>Reccommended Dishes</h4>
                 <section class="gallery-bar">
-                    <img src="pictures/don/soup.png">
-                    <img src="pictures/don/udon.png">
-                    <img src="pictures/don/ramen.png">
-                    <img src="pictures/don/beef-bowl.png">
+                    <img src="pictures/don/soup.png" class="zoom">
+                    <img src="pictures/don/udon.png" class="zoom">
+                    <img src="pictures/don/ramen.png" class="zoom">
+                    <img src="pictures/don/beef-bowl.png" class="zoom">
                 </section>
             </article>
             <aside id="don-perks">
@@ -88,9 +89,9 @@
                 </p>
                 <h4>Reccommended Dishes</h4>
                 <section class="gallery-bar">
-                    <img src="pictures/JimmyJohn/chicken-sandwich.png">
-                    <img src="pictures/JimmyJohn/lettuce-sandwich.png">
-                    <img src="pictures/JimmyJohn/billy-clib.png">
+                    <img src="pictures/JimmyJohn/chicken-sandwich.png" class="zoom">
+                    <img src="pictures/JimmyJohn/lettuce-sandwich.png" class="zoom">
+                    <img src="pictures/JimmyJohn/billy-clib.png" class="zoom">
                 </section>
             </article>
             <aside id="jimmy-perks">
@@ -126,9 +127,9 @@
                 </p>
                 <h4>Reccommended Dishes</h4>
                 <section class="gallery-bar">
-                    <img src="pictures/yumyum/cheerwine.png">
-                    <img src="pictures/yumyum/butterscotch.png">
-                    <img src="pictures/yumyum/strawberry.png">
+                    <img src="pictures/yumyum/cheerwine.png" class="zoom">
+                    <img src="pictures/yumyum/butterscotch.png" class="zoom">
+                    <img src="pictures/yumyum/strawberry.png" class="zoom">
                 </section>
             </article>
             <aside id="yum-perks">
@@ -156,6 +157,28 @@
         <section id="advertisement">
             <img src="pictures/your-ad-here.jpg">
         </section>
+
+    <!-- The purpose of this text here is to
+         replace the text in the aside whenever
+         the image respective to the meal is 
+         zoomed in -->
+    <div class="hidden">
+        <aside class="food-review">
+            <!-- don food review -->
+            <p class="beef-bowl"></p>
+            <p class="ramen"></p>
+            <p class="udon"></p>
+            <p class="soup"></p>
+            <!-- jimmy johns food review -->
+            <p class="chicken-sandwich"></p>
+            <p class="lettuce-sandwich"></p>
+            <p class="billy-club"></p>
+            <!-- yum yum food review -->
+            <p class="cheerwine"></p>
+            <p class="butterscotch"></p>
+            <p class="strawberry"></p>
+        </aside>
+    </div>
     </body>
 </html>
         
