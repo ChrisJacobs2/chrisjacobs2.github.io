@@ -1,11 +1,17 @@
+body {
+    overflow:visible;
+    overflow-x: hidden;
+
+}
 main {
     /* the margin-top prevents the buttons from interfering
     with the restaurant content */
     margin-top: 100px;
     background-color: red;
-    width: 100vw;
+    width: 99vw;
+    display: flex;
+    justify-content: space-between;
 }
-
 
 
 /* RESTAURANT CONTENT ############################## */
@@ -28,6 +34,27 @@ main {
 }
 /* END RESTAURANT CONTENT ########################## */
 
+
+/* ASIDE CONTENT ################################### */
+/*
+    Like the restaurant content, the aside content will
+    be controlled using javascript magic.
+*/
+#don-perks {
+    display:block;
+}
+#jimmy-perks {
+    display: none;
+}
+#yum-perks {
+    display: none;
+}
+#don-perks, #jimmy-perks, #yum-perks {
+    background-color: rgb(30, 170, 105);
+    flex: 1;
+    /* display: none; */
+}
+/* END ASIDE CONTENT ############################### */
 
 
 /* NAVIGATION BUTTONS ############################## */
@@ -54,9 +81,21 @@ main {
     justify-content: space-around;
     flex-wrap: wrap;
 }
-
 .gallery-bar img {
     width: 150px;
     height: 150px;
 }
 /* END GALLERY BAR ################################# */
+
+
+/* ADVERTISEMENT BAR ############################### */
+#advertisement {
+    display: flex;
+    justify-content: center; 
+}
+#advertisement img {
+    /* width: 40%;
+    height: 100px; */
+    size: 50px;
+}
+/* END ADVERTISEMENT BAR ########################### */

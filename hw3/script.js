@@ -17,10 +17,22 @@ let foodRcmd = [    // food recommendations
     document.getElementById("yum")
 ];
 
+let foodAside = [   // food aside
+    document.getElementById("don-perks"),
+    document.getElementById("jimmy-perks"),
+    document.getElementById("yum-perks")
+]
+
     // SITE INITIALIZATION
+// food reccomendations
 document.getElementById("don").style.display = "block";
 document.getElementById("jimmy").style.display = "none";
 document.getElementById("yum").style.display = "none";
+// aside info
+document.getElementById("don-perks").style.display = "block";
+document.getElementById("jimmy-perks").style.display = "none";
+document.getElementById("yum-perks").style.display = "none";
+
 index = 0;
 
     // EVENT LISTENERS
@@ -45,6 +57,7 @@ function cycle(direction) {
 
     // hide the element at the current index
     foodRcmd[index].style.display = "none";
+    foodAside[index].style.display = "none";
 
     // change the index based on the direction
     if (direction == "left") {
@@ -62,4 +75,5 @@ function cycle(direction) {
 
     // show the element at the new index
     foodRcmd[index].style.display = "block";
+    foodAside[index].style.display = "block";
 }
