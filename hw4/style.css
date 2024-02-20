@@ -1,0 +1,25 @@
+#computer-throw {
+    background-color: lightgreen;
+    margin-bottom: 100px;
+}
+
+#player-throw {
+    background-color: rosybrown;
+}
+
+#result {
+    background-color: aquamarine;
+}
+
+.button-holder {
+    display: flex;
+    justify-content: center;
+    gap:50px;
+    padding: 10px;
+    background-color: lightslategray;
+}
+
+h3 {
+    margin: auto;
+    text-align: center;
+}
