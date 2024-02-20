@@ -13,6 +13,22 @@
     /* background-color: rosybrown; */
 }
 
+#player-throw img {
+    cursor: pointer;
+    border: 4px solid transparent;
+}
+
+#rock:hover {
+    border: 4px solid red;
+}
+#paper:hover {
+    border: 4px solid purple;
+}
+#scissors:hover {
+    border: 4px solid blue;
+}
+
+
 #result {
     display: flex;
     padding: 10px;
@@ -30,6 +46,10 @@
     /* background-color: lightslategray; */
 }
 
+.hidden {
+    display: none;
+}
+
 h3 {
     margin: auto;
     text-align: center;
@@ -37,6 +57,7 @@ h3 {
 
 button {
     margin: auto;
+    cursor: pointer;
 }
 
 body {
