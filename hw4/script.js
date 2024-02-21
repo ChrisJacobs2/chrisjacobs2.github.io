@@ -1,9 +1,10 @@
 const choices = ['rock', 'paper', 'scissors'];
+const gameResultMsg = document.getElementById('game-result-msg');
 
 var result;
-var wins;
-var losses;
-var ties;
+var wins = 0;
+var losses = 0;
+var ties = 0;
 
 /**
  * This function takes two string parameters, the player's choice and the computer's
@@ -34,7 +35,7 @@ function playGame(playerChoice, computerChoice) {
  */
 function computerChoice() {
     // rand is a real number from 0 to 3, not including 3
-    const rand = Math.random() * 3;
+    var rand = Math.random() * 3;
     // rand is now an interger from 1 to 3. Pretty low (but nonzero) chance of it being 0.
     rand = Math.ceil(rand);
     if (rand == 1 || rand == 0) {
@@ -62,16 +63,21 @@ function updateResult(result) {
             ties++;
             break;
     }
-    // TODO: Make it so that the result is displayed on the webpage
+    gameResultMsg.innerHTML = result;
+    // TODO: Add code to display the number of wins, losses, and ties
+    // TODO: Add a reset button
 }
 
 /**
  * This function runs the game given an element id in the form of a string
  */
 function main(playerChoice) {
-    const cpuChoice = computerChoice(); 
+    const cpuChoice = computerChoice();
     result = playGame(playerChoice, cpuChoice);
+    // TODO: run an animation to show the computer thinking
+        // TODO: Make the box I clicked highlighted until the computer makes a choice
     updateResult(result);
+    // TODO: Run an animation to show the result of the game
 }
 
 
