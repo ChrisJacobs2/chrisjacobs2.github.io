@@ -67,6 +67,16 @@ button {
     border: 2px solid gray;
 }
 
-body {
-    background: linear-gradient(to right, red, blue);
+@keyframes gradient {
+    0% { background-position: 0%; }
+    50% { background-position: 100%; }
+    100% { background-position: 0%; }
 }
+
+body{
+    background: linear-gradient(to top right, red, blue);
+    background-size: 200% 200%;
+    animation: gradient 10s ease-in-out infinite;
+}
+
+
