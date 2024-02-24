@@ -8,19 +8,19 @@
     <body>
         <section id="computer-throw">
             <div class="button-holder">
-                <img src="pictures/question-mark.PNG" alt="question" id="question">
-                <img src="pictures/rock.PNG" alt="rock" class="hidden" id="rock-anim">
-                <img src="pictures/paper.PNG" alt="paper" class="hidden" id="paper-anim">
-                <img src="pictures/scissors.PNG" alt="scissors" class="hidden" id="scissors-anim">
+                <img src="pictures/question-mark.PNG" alt="question" id="question" draggable="false">
+                <img src="pictures/rock.PNG" alt="rock" class="hidden" id="rock-anim" draggable="false">
+                <img src="pictures/paper.PNG" alt="paper" class="hidden" id="paper-anim" draggable="false">
+                <img src="pictures/scissors.PNG" alt="scissors" class="hidden" id="scissors-anim" draggable="false">
             </div>
             <h3>Computer Throw</h3>
         </section>
 
         <section id="player-throw">
             <div class="button-holder">
-                <img src="pictures/rock.PNG" alt="rock" id="rock">
-                <img src="pictures/paper.PNG" alt="paper" id="paper">
-                <img src="pictures/scissors.PNG" alt="scissors" id="scissors">
+                <img src="pictures/rock.PNG" alt="rock" id="rock" class="clickable" draggable="false">
+                <img src="pictures/paper.PNG" alt="paper" id="paper" class="clickable" draggable="false">
+                <img src="pictures/scissors.PNG" alt="scissors" id="scissors" class="clickable" draggable="false">
             </div>
             <h3>Player Throw</h3>
         </section>
@@ -29,7 +29,19 @@
             <h3>
                 Results: <span id="game-result-msg"></span>
             </h3>
-            <button id="play-again">Play Again</button>
+            <button id="play-again">Play Again</button><br>
+        </section>
+        <section id="score">
+            <h3>
+                Wins: <span id="wins">0</span>
+            </h3>
+            <h3>
+                Losses: <span id="losses">0</span>
+            </h3>
+            <h3>
+                Ties: <span id="ties">0</span>
+            </h3>
+            <button id="reset">Reset</button>
         </section>
     </body>
 </html>
