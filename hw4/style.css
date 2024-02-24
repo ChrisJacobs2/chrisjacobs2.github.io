@@ -2,17 +2,19 @@
     padding: 10px;
     border: 2px solid gray;
     background-color: white;
+    width: 500px;
+    margin: auto;
 }
 
 #computer-throw {
     margin-bottom: 100px;
+    width: 200px;
 }
 
 
 #player-throw img {
     border: 4px solid transparent;
     cursor: pointer;
-    /* pointer-events: none; */
 }
 
 #player-throw img:hover {
