@@ -1,0 +1,76 @@
+body {
+    background-color: rgb(58, 58, 58);
+    font-family: Segoe UI, Helvetica, Arial, sans-serif;
+}
+
+main {
+    /* background-color: bisque; */
+    margin-top: 40px;
+    padding : 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+header {
+    /* background-color: aquamarine; */
+    padding: 10px;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    /* background-color: aliceblue; */
+}
+
+.template {
+    /* visibility: hidden; */
+}
+
+.entry {
+    background-color: white;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+    .entry-header {
+        padding: 10px;
+        padding-top: 20px;
+        display: flex;
+        /* background-color: rgb(240, 102, 102); */
+    }
+        .git-icon {
+            padding-right: 10px;
+        }
+        .title-and-stats {
+            color: #0366d6;
+            font-weight: bold;
+            /* background-color: aqua; */
+            position: relative;
+            top: -10px;
+        }
+            .title-and-stats a {
+                text-decoration: none;
+                color: #0366d6;
+                font-size: larger;
+            }
+            .title-stats span{
+                margin-right: 10px;
+                margin-left: -2px;
+            }
+    .entry-content {
+        /* background-color: rgb(94, 94, 150); */
+        padding: 10px;
+    }
+        .description-stats {
+            display: flex;
+            /* background-color: rgb(94, 94, 150); */
+            gap: 5px;
+        }
+        .description-stats span{
+            font-weight: bold;
+        }
+            .stats-group-2 span{
+                font-weight: 400;
+            }
