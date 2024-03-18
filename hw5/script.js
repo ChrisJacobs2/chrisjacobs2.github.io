@@ -1,7 +1,8 @@
+// Hello Sunny!
+
 // Variables
 var repositoryArray = [];
 const main = document.querySelector('main');
-
 var galleryTemplate = document.querySelector('.template');
 galleryTemplate = galleryTemplate.cloneNode(true);
 
@@ -9,23 +10,30 @@ galleryTemplate = galleryTemplate.cloneNode(true);
 const inputField = document.querySelector('.search-bar input');
 const submitButton = document.querySelector('.search-bar button');
 
-// Add an event listener to the submit button using an anonymous function
-submitButton.addEventListener('click', function(event) {
-    // Get the value of the input field
+// event listeners
+submitButton.addEventListener('click', handleInput);
+inputField.addEventListener('keypress', handleInput);
+
+function handleInput(event) {
+    // if the event is a keypress, make sure it's the enter key
+    if (event.type === 'keypress' && event.key !== 'Enter') {
+        return;
+    }
+    // get the value of the input field
     const inputValue = inputField.value;
-    // printer function for testing
-    printer(inputValue);
-
     gallery_fetch(inputValue);
-    
-});
-
-// This function just prints the value to the console
-function printer(value) {
-    console.log(value);
 }
 
-// This function fetches the gallery data from github.
+// setup
+gallery_fetch('chrisjacobs2');
+
+
+/**
+ * Fetches the repository data for a given GitHub username and displays the gallery.
+ *
+ * @param {string} username - The GitHub username to fetch repositories for.
+ * @throws {Error} Will throw an error if the fetch operation fails.
+ */
 function gallery_fetch(username) {
     // First, build the url using username from the input field
     // https://api.github.com/users/USERNAME/repos
@@ -36,23 +44,28 @@ function gallery_fetch(username) {
         .then(response => response.json())
         .then(data => {
             // Print the data to the console
-            console.log(data);
+            // console.log(data);
             // Call the function to display the gallery
             displayGallery(data);
         })
         .catch(error => console.log(error));
 }
 
-// data is an array of javascript objects
+/**
+ * Displays the gallery using the provided data.
+ *
+ * @param {Object[]} data - An array of JavaScript objects representing the data to be displayed.
+ */
 function displayGallery(data) {
     clearGallery();
     arraySetup(data);
     firstSweep();
-    
+    secondSweep();
 }
 
-
-
+/**
+ * Clears the gallery by emptying the repositoryArray and removing all children from the <main> element.
+ */
 function clearGallery() {
     // empty repositoryArray
     repositoryArray = [];    
@@ -62,6 +75,11 @@ function clearGallery() {
     main.innerHTML = '';
 }
 
+/**
+ * Sets up the global repositoryArray with data from the fetched repositories.
+ *
+ * @param {Object[]} data - An array of JavaScript objects, each representing a GitHub repository.
+ */
 function arraySetup(data) {
     // loop through the "data" array
         // each object in the array represents a repository
@@ -107,8 +125,12 @@ function arraySetup(data) {
     });
 }
 
-
-function createRepository({stars, forks, url, name, description, creationDate, updateDate, watchers, first_language, commits_url, contributors_url, languages_url}) {
+/**
+ * Creates a new repository object with the provided properties.
+ *
+ * @returns {Object} A new repository object.
+ */
+function createRepository({stars, forks, url, name, description, creationDate, updateDate, watchers, first_language, contributors_url, languages_url}) {
     return {
         stars,
         forks,
@@ -124,6 +146,10 @@ function createRepository({stars, forks, url, name, description, creationDate, u
     };
 }
 
+/**
+ * Loops through the repositoryArray and for each repository, creates a clone of the galleryTemplate,
+ * fills in the clone with the repository data, and appends the clone to the <main> element.
+ */
 function firstSweep() {
     var counter = 0;
     // loop through the repositoryArray
@@ -152,60 +178,106 @@ function firstSweep() {
     });
 }
 
-// commits and languages are fetched here
+/**
+ * Performs a second sweep over the repository entries to fetch and display additional data.
+ * For each entry, it fetches the number of commits and the languages used in the repository,
+ * and updates the entry with this data.
+ */
 function secondSweep() {
-    var counter = 0;
-    // get a list of each class "entry" in the <main> element
+    // get all the entries
     let entries = document.querySelectorAll('.entry');
-    // iterate over entries
+
+    // iterate over them
     entries.forEach(entry => {
         // get the data-index attribute
         let index = entry.getAttribute('data-index');
 
-            // ADDING COMMIT COUNTER
-        // find the number of commits
-        let num_commits = findCommits(index);
-        // update the entry with the new data
-        entry.querySelector('.commits').textContent = num_commits;
+        // ADDING COMMIT COUNTER
+        // find the number of commits, using promise chaining
+        findCommits(index)
+            .then(num_commits => {
+                // update the entry with the new data
+                entry.querySelector('.commits').textContent = num_commits;
+            })
+            .catch(error => console.log(error));
 
-            // ADDING LANGUAGES LIST
-        // get the list of languages
-        let languages = findLanguages(index);
-        // grab "stats-group-2"
-        let lang_div = entry.querySelector('.stats-group-2');
-        // iterate over the languages
-        languages.forEach(lang => {
-            // create a new <span> element
-            let new_span = document.createElement('span');
-            // fill in the <span> element with the language name
-            new_span.textContent = lang;
-            // append the <span> element to the "stats-group-2" div
-            lang_div.appendChild(new_span);            
-        });
+        // ADDING LANGUAGES
+        // find the languages, using promise chaining
+        findLanguages(index)
+            .then(languages => {
+                // loop over languages, skipping the first one
+                for (let i = 1; i < languages.length; i++) {
+                    let language = languages[i];
+                    let x = document.createElement('span');
+                    x.textContent = language;
+                    entry.querySelector('.stats-group-2').appendChild(x);
+                }
+            })
+            .catch(error => console.log(error));
     }); 
 }
 
+/**
+ * Fetches the number of commits for a repository at a given index in the repositoryArray.
+ *
+ * @param {number} index - The index of the repository in the repositoryArray.
+ * @returns {Promise<number>} A Promise that resolves with the number of commits.
+ * @throws {Error} Will throw an error if the fetch operation fails.
+ */
 function findCommits(index) {
-    let num_commits;
-    let repo = repositoryArray[index];
-    let url = repo.contributors_url;
-    // make a fetch request to the url. This will return a list of contributors, each having a field called "contributions"
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            num_commits = addContributions(data);
-        })
-        .catch(error => console.log(error));
-    // loop through the list of contributors, adding up the contributions
-
-    return num_commits;
+    return new Promise((resolve, reject) => {
+        let num_commits = 0;
+        let repo = repositoryArray[index];
+        let url = repo.contributors_url;
+        // make a fetch request to the url. This will return a list of contributors, each having a field called "contributions"
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                num_commits = addContributions(data);
+                resolve(num_commits);
+            })
+            .catch(error => {
+                console.log(error);
+                reject(error);
+            });
+    });
 }
 
+/**
+ * Calculates the total number of contributions from an array of contributors.
+ *
+ * @param {Object[]} data - An array of contributor objects, each with a 'contributions' property.
+ * @returns {number} The total number of contributions.
+ */
 function addContributions(data) {
     let num_commits = 0;
     data.forEach(contributor => {
         num_commits += contributor.contributions;
     });
     return num_commits;
+}
+
+/**
+ * Fetches the languages used in a repository at a given index in the repositoryArray.
+ *
+ * @param {number} index - The index of the repository in the repositoryArray.
+ * @returns {Promise<string[]>} A Promise that resolves with an array of languages.
+ * @throws {Error} Will throw an error if the fetch operation fails.
+ */
+function findLanguages(index) {
+    return new Promise((resolve, reject) => {
+        let repo = repositoryArray[index];
+        let url = repo.languages_url;
+        // make a fetch request to the url. This will return a list of languages
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                let languages = Object.keys(data);
+                resolve(languages);
+            })
+            .catch(error => {
+                console.log(error);
+                reject(error);
+            });
+    });
 }

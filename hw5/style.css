@@ -24,10 +24,6 @@ header {
     /* background-color: aliceblue; */
 }
 
-.template {
-    /* visibility: hidden; */
-}
-
 .entry {
     background-color: white;
     width: 300px;
@@ -73,4 +69,9 @@ header {
         }
             .stats-group-2 span{
                 font-weight: 400;
+                display: flex;
+                flex-direction: column;
+            }
+            .stats-group-2 p {
+                font-weight: bold;
             }
