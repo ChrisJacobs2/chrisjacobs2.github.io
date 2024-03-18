@@ -1,5 +1,7 @@
 // Variables
 var repositoryArray = [];
+const main = document.querySelector('main');
+
 var galleryTemplate = document.querySelector('.template');
 galleryTemplate = galleryTemplate.cloneNode(true);
 
@@ -74,7 +76,12 @@ function arraySetup(data) {
         let name = repository.name;
         let description = repository.description;
         let creationDate = new Date(repository.created_at);
+        creationDate = creationDate.toLocaleString('default', { month: 'long', year: 'numeric' });
         let updateDate = new Date(repository.updated_at);
+        let currentDate = new Date();
+        let timeDiff = Math.abs(currentDate.getTime() - updateDate.getTime());
+        let diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        updateDate = diffDays;
         let watchers = repository.watchers_count; // we could use 'watchers' instead of 'watchers_count'
         let first_language = repository.language;
         // these two below need to be fetched later.
@@ -118,18 +125,87 @@ function createRepository({stars, forks, url, name, description, creationDate, u
 }
 
 function firstSweep() {
+    var counter = 0;
     // loop through the repositoryArray
         // for each repository, make a clone of the galleryTemplate
         // and save it to a variable
-    // then, fill in the clone with the repository data
-    // then, append the clone to the <main> element
-
-
+        // then, fill in the clone with the repository data
+        // then, append the clone to the <main> element
+    repositoryArray.forEach(repository => {
+        let clone = galleryTemplate.cloneNode(true);
+        // change href attribute of the <a> element to the repository url
+        clone.querySelector('.repository-name').setAttribute('href', repository.url);
+        // fill in the clone with the repository data
+        clone.querySelector('.repository-name').textContent = repository.name;
+        clone.querySelector('.star-count').textContent = repository.stars;
+        clone.querySelector('.fork-count').textContent = repository.forks;
+        clone.querySelector('.watchers-count').textContent = repository.watchers;
+        clone.querySelector('.repository-desc').textContent = repository.description;
+        clone.querySelector('.updated').textContent = repository.updateDate;
+        clone.querySelector('.created').textContent = repository.creationDate;
+        clone.querySelector('.lang1').textContent = repository.first_language;
+        // add data-index attribute to the clone
+        clone.setAttribute('data-index', counter);
+        counter++;
+        // append the clone to the <main> element
+        main.appendChild(clone);        
+    });
 }
 
+// commits and languages are fetched here
 function secondSweep() {
     var counter = 0;
-    // iterate over each div with class "entry" in the <main> element
-        // for each entry, reference contributors_url and languages_url
-        // from the element in repositoryArray at the current index
+    // get a list of each class "entry" in the <main> element
+    let entries = document.querySelectorAll('.entry');
+    // iterate over entries
+    entries.forEach(entry => {
+        // get the data-index attribute
+        let index = entry.getAttribute('data-index');
+
+            // ADDING COMMIT COUNTER
+        // find the number of commits
+        let num_commits = findCommits(index);
+        // update the entry with the new data
+        entry.querySelector('.commits').textContent = num_commits;
+
+            // ADDING LANGUAGES LIST
+        // get the list of languages
+        let languages = findLanguages(index);
+        // grab "stats-group-2"
+        let lang_div = entry.querySelector('.stats-group-2');
+        // iterate over the languages
+        languages.forEach(lang => {
+            // create a new <span> element
+            let new_span = document.createElement('span');
+            // fill in the <span> element with the language name
+            new_span.textContent = lang;
+            // append the <span> element to the "stats-group-2" div
+            lang_div.appendChild(new_span);            
+        });
+    }); 
+}
+
+function findCommits(index) {
+    let num_commits;
+    let repo = repositoryArray[index];
+    let url = repo.contributors_url;
+    // make a fetch request to the url. This will return a list of contributors, each having a field called "contributions"
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            num_commits = addContributions(data);
+        })
+        .catch(error => console.log(error));
+    // loop through the list of contributors, adding up the contributions
+
+    return num_commits;
+}
+
+function addContributions(data) {
+    let num_commits = 0;
+    data.forEach(contributor => {
+        num_commits += contributor.contributions;
+    });
+    return num_commits;
 }
